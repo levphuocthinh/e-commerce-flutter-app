@@ -1,0 +1,33 @@
+buildscript {
+        repositories {
+            google()
+            jcenter()
+        }
+    dependencies {
+        classpath "com.google.gms:google-services:4.4.2"
+        // classpath "com.google.gms:google-services:4.4.2"
+        classpath 'com.android.tools.build:gradle:8.1.0'  // Đảm bảo rằng bạn đang sử dụng phiên bản 8.1.0 hoặc cao hơn
+
+    }
+
+
+}
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.buildDir = "../build"
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+
+// subprojects {
+//     project.evaluationDependsOn(":app")
+// }
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
